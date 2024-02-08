@@ -1,0 +1,58 @@
+<ui:composition template="/WEB-INF/template/generico.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="corpo">
+        <center>
+            <div style="width: 1000px;
+                 height: 639px;
+                 border: 1px solid #ccc;
+                 text-align: center;
+                 align-items: center;
+                 justify-content: center;
+                 ">
+
+                <h1 style="font-family: Arial" ><strong>Lista de Vendas</strong></h1>
+
+                <h:form>
+                    <center>
+                        <div style="
+                             width: 80%;
+                             height: 80%;
+                             border: 1px solid #ccc;
+
+                             ">
+                            <p:dataTable  var="venda" value="#{vendaBean.listaVendas}" rowKey="#{venda.id}"
+                                          rows="4"
+                                          paginator="true"
+                                          paginatorPosition="bottom">
+
+                                <p:column headerText="Id" >
+                                    <h:outputText value="#{venda.id}" />
+                                </p:column>
+                                <p:column headerText="Data">
+                                    <h:outputText value="#{venda.data}" >
+                                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                                    </h:outputText>
+                                </p:column>
+                                <p:column headerText="Valor Total">
+                                    <h:outputText value="#{venda.valorTotal}"/>
+                                </p:column>
+                                <p:column headerText="Id do Cliente" >
+                                    <h:outputText value="#{venda.cliente.id}" />
+                                </p:column>
+
+                            </p:dataTable>
+
+                        </div>
+                    </center>
+                </h:form>
+
+            </div>
+        </center>
+
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,79 @@
+<ui:composition template="/WEB-INF/template/generico.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="corpo">
+
+        <center>
+            <div style="width: 1000px;
+                 height: 639px;
+                 border: 1px solid #ccc;
+                 text-align: center;
+                 align-items: center;
+                 justify-content: center;
+
+                 ">
+
+                <h1 style="font-family: Arial" ><strong>Lista de Clientes</strong></h1>
+
+                <h:form>
+                    <center>
+                        <div style="
+                             width: 80%; 
+                             height: 80%; 
+                             border: 1px solid #ccc;
+
+                             ">
+                            <p:dataTable  var="cliente"  value="#{clienteBean.listaClientes}" rowKey="#{cliente.id}"
+                                          id="tabela" 
+                                          rows="5"
+                                          paginator="true"
+                                          paginatorPosition="bottom"
+                                          >
+                                <p:column headerText="Id" width="5%" >
+                                    <h:outputText value="#{cliente.id}" />
+                                </p:column>
+                                <p:column headerText="Nome">
+                                    <h:outputText value="#{cliente.nome}" />
+                                </p:column>
+                                <p:column headerText="Endereço" >
+                                    <h:outputText value="#{cliente.endereco}" />
+                                </p:column>
+                                <p:column headerText="Cidade" >
+                                    <h:outputText value="#{cliente.cidade}" />
+                                </p:column>
+                                <p:column headerText="UF" width="5%" >
+                                    <h:outputText value="#{cliente.uf}" />
+                                </p:column>
+                                <p:column headerText="CEP" >
+                                    <h:outputText value="#{cliente.cep}" />
+                                </p:column>
+                                <p:column headerText="Email" width="17%">
+                                    <h:outputText value="#{cliente.email}" />
+                                </p:column>
+
+                                <p:column headerText="Opções" width="10%">
+                                    <p:commandButton ajax="false" value="Editar" 
+                                                     action="#{clienteBean.isEditar(cliente)}"
+                                                     update="formulario"
+                                                     style="background-color: #00BFFF;
+                                                     font-family: Arial; border-color: white"/>
+                                    <p:commandButton ajax="false" value="Excluir" update="form" action="#{clienteBean.excluir(cliente)}" 
+                                                     style="background-color: red;
+                                                     font-family: Arial; border-color: white" />
+
+                                </p:column>
+                            </p:dataTable>
+
+                        </div>
+                    </center>
+                </h:form>
+
+            </div>
+        </center>
+
+    </ui:define>
+</ui:composition>

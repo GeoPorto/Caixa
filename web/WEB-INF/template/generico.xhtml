@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <h:outputStylesheet library="css" name="file.css"/>
+        <title>Caixa</title>
+    </h:head>
+    <h:body >
+
+        <h:form id="geral">
+            <p:menubar style="background-color: #ff9933"
+                       >
+
+                <p:submenu label="Cliente" icon="pi pi-fw pi-users">
+                    <p:menuitem  value="Cadastrar" icon="pi pi-fw pi-plus" outcome="clienteCadastro.xhtml?faces-redirect=true" disabled="#{clienteBean.editar || produtoBean.editar}"/>
+                    <p:menuitem  value="Listar" icon="pi pi-fw pi-book" outcome="clienteListar.xhtml?faces-redirect=true"   disabled="#{clienteBean.editar || produtoBean.editar}"/>
+                </p:submenu>
+
+                <p:submenu label="Produto" icon="pi pi-fw pi-box">
+                    <p:menuitem value="Cadastrar" icon="pi pi-fw pi-plus" outcome="produtoCadastro.xhtml?faces-redirect=true"  disabled="#{clienteBean.editar || produtoBean.editar}"/>
+                    <p:menuitem value="Listar" icon="pi pi-fw pi-book" outcome="produtoListar.xhtml?faces-redirect=true"  disabled="#{clienteBean.editar || produtoBean.editar}"/>
+                </p:submenu>
+
+                <p:submenu label="Venda" icon="pi pi-fw pi-briefcase">
+                    <p:menuitem value="Cadastrar" icon="pi pi-fw pi-plus" outcome="vendaCadastro.xhtml?faces-redirect=true"  disabled="#{clienteBean.editar || produtoBean.editar}"/>
+                    <p:menuitem value="Listar" icon="pi pi-fw pi-book" outcome="vendaListar.xhtml?faces-redirect=true"  disabled="#{clienteBean.editar || produtoBean.editar}"/>
+                </p:submenu>
+            </p:menubar>
+
+
+
+            <p:messages></p:messages>
+
+        </h:form>
+
+        <ui:insert name="corpo"/>
+
+    </h:body>
+</html>
